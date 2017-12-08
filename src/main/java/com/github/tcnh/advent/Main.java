@@ -15,5 +15,9 @@ public class Main {
         System.out.println("Day 5, part 2: " + Day5.secondAnswer());
         System.out.println("Day 6, part 1: " + Day6.firstAnswer());
         System.out.println("Day 6, part 2: " + Day6.secondAnswer());
+        System.out.println("Day 7, part 1: " + Day7.firstAnswer());
+        System.out.println("Day 7, part 2: " + Day7.secondAnswer());
+        System.out.println("Day 8, part 1: " + Day8.firstAnswer());
+        System.out.println("Day 8, part 2: " + Day8.secondAnswer());
     }
 }
