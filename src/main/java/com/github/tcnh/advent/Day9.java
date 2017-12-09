@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class Day9
-{
+class Day9 {
     private static int garbageCount = 0;
 
     static int firstAnswer() {
@@ -24,19 +23,20 @@ class Day9
     }
 
     private static String removeIgnored(String in) {
-        while(in.contains("!")) {
+        while (in.contains("!")) {
             int index = in.indexOf("!");
             StringBuilder sb = new StringBuilder(in);
-            sb.deleteCharAt(index +1);
+            sb.deleteCharAt(index + 1);
             sb.deleteCharAt(index);
             in = sb.toString();
         }
         return in;
     }
+
     private static String removeGarbage(String in) {
         int start = in.indexOf("<");
         int end = in.indexOf(">", start);
-        while (start >=0 && end >=0) {
+        while (start >= 0 && end >= 0) {
             StringBuilder sb = new StringBuilder(in);
             sb.delete(start, end + 1);
             in = sb.toString();
@@ -47,21 +47,22 @@ class Day9
         return in;
     }
 
-    private static int sumOfAllGroups(String in){
+    private static int sumOfAllGroups(String in) {
         int depth = 0;
         int sum = 0;
-        for(char c : in.toCharArray()) {
-            if(c == '{') {
+        for (char c : in.toCharArray()) {
+            if (c == '{') {
                 depth++;
             }
-            if(c == '}') {
+            if (c == '}') {
                 sum += depth;
                 depth--;
             }
         }
         return sum;
     }
-    private static List<String> lines () {
+
+    private static List<String> lines() {
         List<String> lines = new ArrayList<>();
         try {
             String inputFile = "src/main/resources/day9.input";
