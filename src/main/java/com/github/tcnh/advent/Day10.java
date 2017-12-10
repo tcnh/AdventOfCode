@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.List;
 
 class Day10 {
-    private static Integer[] input = {14,58,0,116,179,16,1,104,2,254,167,86,255,55,122,244};
+    private static Integer[] input = {14, 58, 0, 116, 179, 16, 1, 104, 2, 254, 167, 86, 255, 55, 122, 244};
     private static int listSize = 256;
     private static int position = 0;
     private static int skipSize = 0;
@@ -14,16 +14,14 @@ class Day10 {
     static int firstAnswer() {
         List<Integer> list = populateList(listSize);
         list = processHash(list, Arrays.asList(input));
-
         return list.get(0) * list.get(1);
-
     }
 
     private static List<Integer> processHash(List<Integer> list, List<Integer> input) {
-        for(int length : input) {
+        for (int length : input) {
             List<Integer> sectionPositions = new ArrayList<>();
             List<Integer> listToReverse = new ArrayList<>();
-            for(int i = 0; i < length; i++){
+            for (int i = 0; i < length; i++) {
                 int pos = position % list.size();
                 sectionPositions.add(pos);
                 listToReverse.add(list.get(pos));
@@ -32,7 +30,7 @@ class Day10 {
 
             Collections.reverse(listToReverse);
             int item = 0;
-            for(Integer p : sectionPositions) {
+            for (Integer p : sectionPositions) {
                 list.set(p, listToReverse.get(item));
                 item++;
             }
@@ -49,7 +47,7 @@ class Day10 {
         String in = getInputAsString();
 
         List<Integer> lengths = new ArrayList<>();
-        for(char c : in.toCharArray()){
+        for (char c : in.toCharArray()) {
             lengths.add((int) c);
         }
         Integer[] append = {17, 31, 73, 47, 23};
@@ -57,27 +55,27 @@ class Day10 {
 
         List<Integer> list = populateList(listSize);
         List<Integer> sparseHash = new ArrayList<>();
-        for(int i = 0; i < 64; i++){
+        for (int i = 0; i < 64; i++) {
             sparseHash = processHash(list, lengths);
         }
 
         List<Integer> denseHash = getDenseHash(sparseHash);
 
         StringBuilder knotHash = new StringBuilder();
-        for(int val : denseHash) {
+        for (int val : denseHash) {
             String hex = getHexValueFor(val);
             knotHash.append(hex);
         }
-    return knotHash.toString();
+        return knotHash.toString();
     }
 
     private static List<Integer> getDenseHash(List<Integer> sparseHash) {
         int pos = 0;
         int out;
         List<Integer> denseHash = new ArrayList<>();
-        while(pos < listSize) {
+        while (pos < listSize) {
             out = sparseHash.get(pos);
-            for(int i = pos + 1; i < pos + 16; i++) {
+            for (int i = pos + 1; i < pos + 16; i++) {
                 out = out ^ sparseHash.get(i);
             }
             denseHash.add(out);
@@ -88,7 +86,7 @@ class Day10 {
 
     private static String getInputAsString() {
         StringBuilder inputStr = new StringBuilder();
-        for(Integer in : input) {
+        for (Integer in : input) {
             inputStr.append(in).append(",");
         }
         inputStr.deleteCharAt(inputStr.length() - 1);
@@ -101,7 +99,7 @@ class Day10 {
 
     private static List<Integer> populateList(int length) {
         List<Integer> list = new ArrayList<>();
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             list.add(i);
         }
         return list;
