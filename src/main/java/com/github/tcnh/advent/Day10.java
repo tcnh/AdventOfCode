@@ -13,11 +13,11 @@ class Day10 {
 
     static int firstAnswer() {
         List<Integer> list = populateList(listSize);
-        list = processHash(list, Arrays.asList(input));
+        processHash(list, Arrays.asList(input));
         return list.get(0) * list.get(1);
     }
 
-    private static List<Integer> processHash(List<Integer> list, List<Integer> input) {
+    private static void processHash(List<Integer> list, List<Integer> input) {
         for (int length : input) {
             List<Integer> sectionPositions = new ArrayList<>();
             List<Integer> listToReverse = new ArrayList<>();
@@ -38,7 +38,6 @@ class Day10 {
             position += skipSize;
             skipSize++;
         }
-        return list;
     }
 
     static String secondAnswer() {
@@ -55,7 +54,7 @@ class Day10 {
 
         List<Integer> list = populateList(listSize);
         for (int i = 0; i < 64; i++) {
-            list = processHash(list, lengths);
+            processHash(list, lengths);
         }
         List<Integer> denseHash = getDenseHash(list);
 
@@ -64,7 +63,7 @@ class Day10 {
             String hex = getHexValueFor(val);
             knotHash.append(hex);
         }
-        
+
         return knotHash.toString();
     }
 
