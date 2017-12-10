@@ -54,18 +54,17 @@ class Day10 {
         lengths.addAll(Arrays.asList(append));
 
         List<Integer> list = populateList(listSize);
-        List<Integer> sparseHash = new ArrayList<>();
         for (int i = 0; i < 64; i++) {
-            sparseHash = processHash(list, lengths);
+            list = processHash(list, lengths);
         }
-
-        List<Integer> denseHash = getDenseHash(sparseHash);
+        List<Integer> denseHash = getDenseHash(list);
 
         StringBuilder knotHash = new StringBuilder();
         for (int val : denseHash) {
             String hex = getHexValueFor(val);
             knotHash.append(hex);
         }
+        
         return knotHash.toString();
     }
 
