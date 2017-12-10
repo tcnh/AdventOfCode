@@ -65,7 +65,7 @@ class Day10 {
 
         StringBuilder knotHash = new StringBuilder();
         for(int val : denseHash) {
-            String hex = Integer.toHexString(val).length() < 2 ? "0" + Integer.toHexString(val) : Integer.toHexString(val);
+            String hex = getHexValueFor(val);
             knotHash.append(hex);
         }
     return knotHash.toString();
@@ -93,6 +93,10 @@ class Day10 {
         }
         inputStr.deleteCharAt(inputStr.length() - 1);
         return inputStr.toString();
+    }
+
+    private static String getHexValueFor(int val) {
+        return Integer.toHexString(val).length() < 2 ? "0" + Integer.toHexString(val) : Integer.toHexString(val);
     }
 
     private static List<Integer> populateList(int length) {
