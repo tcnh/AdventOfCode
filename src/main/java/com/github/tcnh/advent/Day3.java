@@ -28,13 +28,7 @@ class Day3 {
             changeDirection();
         }
 
-        if (x < 0) {
-            x = flip(x);
-        }
-        if (y < 0) {
-            y = flip(y);
-        }
-        return x + y;
+        return Math.abs(x) + Math.abs(y);
     }
 
     static int secondAnswer() {
@@ -115,9 +109,5 @@ class Day3 {
         if (direction == 0 || direction == 2) {
             moves++;
         }
-    }
-
-    private static int flip(int n) {
-        return 0 - n;
     }
 }

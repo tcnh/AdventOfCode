@@ -14,8 +14,6 @@ class Day7 {
     private static List<String> allChildren = new ArrayList<>();
 
     static String firstAnswer() {
-        String first = "";
-
         List<String> input = lines();
         for (String line : input) {
             line = line.replaceAll(",", "");
@@ -49,10 +47,9 @@ class Day7 {
         for (String candidate : candidates) {
             boolean inListOfCandidates = allChildren.contains(candidate);
             if (!inListOfCandidates) {
-                first = candidate;
+                firstNode = candidate;
             }
         }
-        firstNode = first;
         return firstNode;
     }
 

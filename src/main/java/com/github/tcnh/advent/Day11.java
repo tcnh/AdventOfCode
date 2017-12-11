@@ -40,9 +40,6 @@ class Day11 {
                 x++;
                 y++;
                 break;
-            case "e":
-                x++;
-                break;
             case "se":
                 x++;
                 y--;
@@ -52,9 +49,6 @@ class Day11 {
                 break;
             case "sw":
                 y--;
-                x--;
-                break;
-            case "w":
                 x--;
                 break;
             case "nw":
