@@ -15,8 +15,7 @@ class Day11 {
     private static int maxDist = 0;
 
     static int firstAnswer() {
-        String input = lines().get(0);
-        String[] steps = input.split(",");
+        String[] steps = lines().get(0).split(",");
         for (String step : steps) {
             move(step);
         }
@@ -37,23 +36,19 @@ class Day11 {
                 y++;
                 break;
             case "ne":
-                x++;
-                y++;
+                x++; y++;
                 break;
             case "se":
-                x++;
-                y--;
+                x++; y--;
                 break;
             case "s":
                 y--;
                 break;
             case "sw":
-                y--;
-                x--;
+                y--; x--;
                 break;
             case "nw":
-                x--;
-                y++;
+                x--; y++;
                 break;
         }
         if (stepsToCoordinate() > maxDist) {
