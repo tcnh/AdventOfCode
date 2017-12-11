@@ -28,11 +28,7 @@ class Day11 {
     }
 
     private static int stepsToCoordinate() {
-        int posX = Math.abs(x);
-        int posY = Math.abs(y);
-        int lowest = Math.min(posX, posY);
-        int highest = Math.max(posX, posY);
-        return lowest + (highest - lowest);
+        return Math.max(Math.abs(x), Math.abs(y));
     }
 
     private static void move(String direction) {
