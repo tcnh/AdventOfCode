@@ -17,42 +17,42 @@ class Day11 {
     static int firstAnswer() {
         String[] steps = lines().get(0).split(",");
         for (String step : steps) {
-            move(step);
+            moveHex(step);
         }
-        return stepsToCoordinate();
+        return hexStepsToCoordinate();
     }
 
     static int secondAnswer() {
         return maxDist;
     }
 
-    private static int stepsToCoordinate() {
-        return Math.max(Math.abs(x), Math.abs(y));
+    private static int hexStepsToCoordinate() {
+        return ((Math.abs(x) + Math.abs(y) + Math.abs(x + y)) / 2);
     }
 
-    private static void move(String direction) {
+    private static void moveHex(String direction) {
         switch (direction) {
             case "n":
-                y++;
-                break;
-            case "ne":
-                x++; y++;
-                break;
-            case "se":
-                x++; y--;
-                break;
-            case "s":
                 y--;
                 break;
+            case "ne":
+                x++; y--;
+                break;
+            case "se":
+                x++;
+                break;
+            case "s":
+                y++;
+                break;
             case "sw":
-                y--; x--;
+                y++; x--;
                 break;
             case "nw":
-                x--; y++;
+                x--;
                 break;
         }
-        if (stepsToCoordinate() > maxDist) {
-            maxDist = stepsToCoordinate();
+        if (hexStepsToCoordinate() > maxDist) {
+            maxDist = hexStepsToCoordinate();
         }
     }
 
