@@ -1,8 +1,5 @@
 package com.github.tcnh.advent.util;
 
-/**
-* Created by Tom on 15-12-2017.
-*/
 public class Node {
     private int size;
     private String name;

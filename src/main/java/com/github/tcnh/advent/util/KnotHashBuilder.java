@@ -10,7 +10,6 @@ public class KnotHashBuilder {
     private int position = 0;
     private int skipSize = 0;
 
-
     private void processHash(List<Integer> list, List<Integer> input) {
         for (int length : input) {
             List<Integer> sectionPositions = new ArrayList<>();
