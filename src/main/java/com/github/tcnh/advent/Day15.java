@@ -25,7 +25,7 @@ class Day15 {
         int compares = 0;
         long compA = 0;
         long compB = 0;
-        while (true) {
+        while (compares <= 5000000) {
             if (compA == 0) {
                 valA = (valA * 16807) % 2147483647;
                 if (valA % 4 == 0) {
@@ -49,18 +49,15 @@ class Day15 {
                 compB = 0;
                 compares++;
             }
-            if (compares >= 5000000) {
-                break;
-            }
-
-
         }
         return count;
     }
 
     private static String last16binary(long val) {
         StringBuilder sb = new StringBuilder(Long.toBinaryString(val));
-        while (sb.length() < 16) sb.insert(0, "0");
+        while (sb.length() < 16) {
+            sb.insert(0, "0");
+        }
         return sb.toString().substring(sb.toString().length() - 16);
     }
 }
