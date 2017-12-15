@@ -1,5 +1,7 @@
 package com.github.tcnh.advent;
 
+import com.github.tcnh.advent.util.Node;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -115,41 +117,3 @@ class Day7 {
     }
     }
 
-    class Node {
-        private int size;
-        private String name;
-        private boolean hasChildren = false;
-        private String[] children;
-
-        boolean hasChildren() {
-            return hasChildren;
-        }
-
-        void setHasChildren() {
-            this.hasChildren = true;
-        }
-
-        int getSize() {
-            return size;
-        }
-
-        void setSize(int size) {
-            this.size = size;
-        }
-
-        String getName() {
-            return name;
-        }
-
-        void setName(String name) {
-            this.name = name;
-        }
-
-        String[] getChildren() {
-            return children;
-        }
-
-        void setChildren(String[] children) {
-            this.children = children;
-        }
-    }

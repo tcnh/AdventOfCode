@@ -1,5 +1,7 @@
 package com.github.tcnh.advent;
 
+import com.github.tcnh.advent.util.KnotHashBuilder;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -7,11 +9,11 @@ import java.util.List;
 
 class Day10 {
     private static Integer[] input = {14, 58, 0, 116, 179, 16, 1, 104, 2, 254, 167, 86, 255, 55, 122, 244};
-    private static int listSize = 256;
     private static int position = 0;
     private static int skipSize = 0;
 
     static int firstAnswer() {
+        int listSize = 256;
         List<Integer> list = populateList(listSize);
         processHash(list, Arrays.asList(input));
         return list.get(0) * list.get(1);
@@ -44,42 +46,8 @@ class Day10 {
         position = 0;
         skipSize = 0;
         String in = getInputAsString();
-
-        List<Integer> lengths = new ArrayList<>();
-        for (char c : in.toCharArray()) {
-            lengths.add((int) c);
-        }
-        Integer[] append = {17, 31, 73, 47, 23};
-        lengths.addAll(Arrays.asList(append));
-
-        List<Integer> list = populateList(listSize);
-        for (int i = 0; i < 64; i++) {
-            processHash(list, lengths);
-        }
-        List<Integer> denseHash = getDenseHash(list);
-
-        StringBuilder knotHash = new StringBuilder();
-        for (int val : denseHash) {
-            String hex = getHexValueFor(val);
-            knotHash.append(hex);
-        }
-
-        return knotHash.toString();
-    }
-
-    private static List<Integer> getDenseHash(List<Integer> sparseHash) {
-        int pos = 0;
-        int out;
-        List<Integer> denseHash = new ArrayList<>();
-        while (pos < listSize) {
-            out = sparseHash.get(pos);
-            for (int i = pos + 1; i < pos + 16; i++) {
-                out = out ^ sparseHash.get(i);
-            }
-            denseHash.add(out);
-            pos += 16;
-        }
-        return denseHash;
+        KnotHashBuilder hashBuilder = new KnotHashBuilder();
+        return hashBuilder.getHash(in);
     }
 
     private static String getInputAsString() {
@@ -89,10 +57,6 @@ class Day10 {
         }
         inputStr.deleteCharAt(inputStr.length() - 1);
         return inputStr.toString();
-    }
-
-    private static String getHexValueFor(int val) {
-        return Integer.toHexString(val).length() < 2 ? "0" + Integer.toHexString(val) : Integer.toHexString(val);
     }
 
     private static List<Integer> populateList(int length) {
