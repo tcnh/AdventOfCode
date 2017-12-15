@@ -75,15 +75,6 @@ public class KnotHashBuilder {
         return denseHash;
     }
 
-    private String getInputAsString(Integer[] input) {
-        StringBuilder inputStr = new StringBuilder();
-        for (Integer in : input) {
-            inputStr.append(in).append(",");
-        }
-        inputStr.deleteCharAt(inputStr.length() - 1);
-        return inputStr.toString();
-    }
-
     private String getHexValueFor(int val) {
         return Integer.toHexString(val).length() < 2 ? "0" + Integer.toHexString(val) : Integer.toHexString(val);
     }
