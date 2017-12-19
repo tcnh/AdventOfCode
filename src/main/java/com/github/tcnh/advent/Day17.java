@@ -24,7 +24,7 @@ class Day17 {
         int position = 0;
         int secondNumber = 0;
         for(int i = 1; i <= 50000000; i++) {
-            position = (position + 1 + steps) % i;
+            position = (position + steps) % i +1;
             if(position == 0) {
                 secondNumber = i;
             }
