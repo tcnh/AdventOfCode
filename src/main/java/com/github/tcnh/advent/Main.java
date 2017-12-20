@@ -42,8 +42,10 @@ public class Main {
 //        System.out.println("Day 17, part 2: " + Day17.secondAnswer());
 //          System.out.println("Day 18, part 1: " + Day18.firstAnswer());
 //          DuetController.main(null);
-        System.out.println("Day 19, part 1: " + Day19.firstAnswer());
-        System.out.println("Day 19, part 2: " + Day19.secondAnswer());
+//        System.out.println("Day 19, part 1: " + Day19.firstAnswer());
+//        System.out.println("Day 19, part 2: " + Day19.secondAnswer());
+        System.out.println("Day 20, part 1: " + Day20.firstAnswer());
+        System.out.println("Day 20, part 2: " + Day20.secondAnswer());
 
     }
 }
