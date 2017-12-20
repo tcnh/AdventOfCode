@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -18,7 +17,7 @@ class Day19 {
     private static int steps = 0;
 
     static String firstAnswer() {
-        pos = getStartingPos();
+        pos = maze.get(0).indexOf("|");
         steps++;
         StringBuilder result = new StringBuilder();
         while (!direction.equals("")) {
@@ -35,7 +34,7 @@ class Day19 {
     }
 
     private static String next() {
-        String nextInstruction = getnextInstruction(direction);
+        String nextInstruction = getNextInstruction(direction);
         if (nextInstruction.equals("+")) {
             steps++;
             getNewDirection();
@@ -52,38 +51,30 @@ class Day19 {
     }
 
     private static void getNewDirection() {
-        String[] dirs = {"up", "right", "left", "down"};
-        List<String> options = new ArrayList<>();
-        options.addAll(Arrays.asList(dirs));
         int prevRow = row;
         int prevPos = pos;
+        String[] options = new String[2];
         if (direction.equals("up") || direction.equals("down")) {
-            options.remove("up");
-            options.remove("down");
+            options[0] = "right";
+            options[1] = "left";
         } else {
-            options.remove("left");
-            options.remove("right");
+            options[0] = "up";
+            options[1] = "down";
         }
-        String newDirection = "";
 
         for (String option : options) {
-            String nextInstruction = getnextInstruction(option);
+            String nextInstruction = getNextInstruction(option);
             pos = prevPos;
             row = prevRow;
             if (!nextInstruction.equals(" ")) {
-                newDirection = option;
-                break;
+                direction = option;
+                return;
             }
         }
-        if (newDirection.equals("")) {
-            direction = "";
-        } else {
-            direction = newDirection;
-        }
-
+        direction = "";
     }
 
-    private static String getnextInstruction(String direction) {
+    private static String getNextInstruction(String direction) {
         String nextInstruction = " ";
         try {
             switch (direction) {
@@ -111,9 +102,6 @@ class Day19 {
 
     }
 
-    private static int getStartingPos() {
-        return maze.get(0).indexOf("|");
-    }
 
     private static List<String> lines() {
         List<String> lines = new ArrayList<>();
